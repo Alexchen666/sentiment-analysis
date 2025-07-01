@@ -4,4 +4,11 @@ version = "0.1.0"
 description = "Build a transformer encoder from scratch for sentiment analysis using PyTorch. This project focuses on understanding and implementing the core components of transformer architecture."
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "ipykernel>=6.29.5",
+    "numpy>=2.3.1",
+    "polars>=1.31.0",
+    "scikit-learn>=1.7.0",
+    "torch>=2.7.1",
+    "transformers>=4.53.0",
+]
