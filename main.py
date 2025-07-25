@@ -227,7 +227,7 @@ class PositionalEncoding(nn.Module):
 
         # Create a positional encoding matrix
         # pe shape: (max_seq_len, d_model)
-        self.pe = torch.zeros(max_seq_len, d_model)
+        pe = torch.zeros(max_seq_len, d_model)
         # position shape: (max_seq_len, 1)
         position = torch.arange(0, max_seq_len, dtype=torch.float).unsqueeze(1)
         # div_term shape: (d_moel / 2)
@@ -236,14 +236,12 @@ class PositionalEncoding(nn.Module):
         )
 
         # Apply sine to even indices in pe, cosine to odd indices
-        self.pe[:, 0::2] = torch.sin(position * div_term)
-        self.pe[:, 1::2] = torch.cos(position * div_term)
+        pe[:, 0::2] = torch.sin(position * div_term)
+        pe[:, 1::2] = torch.cos(position * div_term)
 
         # Add an extra dimension for batch (1, max_seq_len, d_model)
         # This allows it to be broadcasted to input_embeddings (batch_size, seq_len, d_model)
-        self.register_buffer(
-            "pe", self.pe.unsqueeze(0)
-        )  # 'pe' is not a learnable parameter
+        self.register_buffer("pe", pe.unsqueeze(0))  # 'pe' is not a learnable parameter
 
     def forward(self, x):
         """
