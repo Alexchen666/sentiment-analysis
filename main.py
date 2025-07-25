@@ -14,7 +14,7 @@ MAX_SEQ_LENGTH = 512
 # Set a batch size for DataLoader
 BATCH_SIZE = 32
 # Training Hyperparameters
-NUM_EPOCHS = 1
+NUM_EPOCHS = 10
 LEARNING_RATE = 2e-5  # Common learning rate for Transformers
 D_MODEL = 256  # Smaller for faster demo, typically 512 or 768
 NUM_HEADS = 8  # Must divide embed_dim
