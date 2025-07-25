@@ -257,7 +257,7 @@ class PositionalEncoding(nn.Module):
         # x is (batch_size, seq_len, d_model)
         # self.pe is (1, max_seq_len, d_model)
         # We slice self.pe to match the current sequence length of x
-        x = x + self.pe[:, : x.size(1), :]
+        x = x + self.pe[:, : x.size(1), :]  # type: ignore
         return self.dropout(x)  # Apply dropout to the output
 
 
